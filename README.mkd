@@ -65,17 +65,19 @@ Service configuration
 All services are configured in the `config.php` file, usually a service looks
 like this:
 
-    array( 'Flickr', 'photos', array(
-            'method' => 'FlickrUser',
-            'title' => 'Flick<em>r</em>',
-            'description' => 'latest photos',
-            'total' => 16,
-            'key' => '________',
-            'userid' => '________',
-            'username' => '__________',
-            'row' => 4,
-        )
-    ),
+```php
+array( 'Flickr', 'photos', array(
+        'method' => 'FlickrUser',
+        'title' => 'Flick<em>r</em>',
+        'description' => 'latest photos',
+        'total' => 16,
+        'key' => '________',
+        'userid' => '________',
+        'username' => '__________',
+        'row' => 4,
+    )
+),
+```
 
 In this example `Flickr` is the **service name**, `photos` is the **service ID**
 and the inner array is the service configuration. Some parameters can be used
@@ -118,17 +120,19 @@ Box templates control the way whole boxes are displayed. There are a few differe
 
 Example:
 
-    function boxTemplate() {
-        return '
-            <div class="boite {{class}}" id="{{id}}">
-                <h2><a rel="me" href="{{{url}}}">{{{title}}}</a> <span>{{{description}}}</span></h2>
-                <div class="boite-inner">
-                    <ul class="clearfix">
-                        {{{items}}}
-                    </ul>
-                </div>
-            </div>';
-    }
+```php
+function boxTemplate() {
+    return '
+        <div class="boite {{class}}" id="{{id}}">
+            <h2><a rel="me" href="{{{url}}}">{{{title}}}</a> <span>{{{description}}}</span></h2>
+            <div class="boite-inner">
+                <ul class="clearfix">
+                    {{{items}}}
+                </ul>
+            </div>
+        </div>';
+}
+```
 
 ### Item templates
 
@@ -141,9 +145,11 @@ Item templates control the way each box item is displayed. Each service has its 
 
 Example:
 
-    function Twitter_TwitterUser_itemTemplate() {
-        return '<li class="clearfix {{#in_reply_to_screen_name}}reply{{/in_reply_to_screen_name}}"><span class="date"><a href="{{{link}}}">{{{date}}}</a></span>{{{text}}}</li>'."\n";
-    }
+```php
+function Twitter_TwitterUser_itemTemplate() {
+    return '<li class="clearfix {{#in_reply_to_screen_name}}reply{{/in_reply_to_screen_name}}"><span class="date"><a href="{{{link}}}">{{{date}}}</a></span>{{{text}}}</li>'."\n";
+}
+```
 
 There’s currently no documentation about which tag you can put between `{{{}}}` braces for which service. In the meantime, you can check a service file (located in `lib/Services/<Service>.php`) and look for the `populateItemTemplate` function.
 
@@ -151,22 +157,30 @@ There’s currently no documentation about which tag you can put between `{{{}}}
 
 The column template defines how each column is rendered. You don’t have to define this template; the default used by Pubwich is this:
 
-    '<div class="col{{{number}}}">{{{content}}}</div>'
+```php
+'<div class="col{{{number}}}">{{{content}}}</div>'
+```
 
 Where `{{{number}}}` is replaced by the column number and `{{{content}}}` is replaced by the column content (the *boxes*). For instance, you could put this in your `functions.php` file:
 
-    funtion columnTemplate() {
-        '<div class="column column-{{{number}}}"><div class="column-inner">{{{content}}}</div></div>';
-    }
+```php
+funtion columnTemplate() {
+    '<div class="column column-{{{number}}}"><div class="column-inner">{{{content}}}</div></div>';
+}
+```
 
 ### Layout templates
 
 The layout template defines the columns layout. Again, you don’t have to define this template; the default layout used by Pubwich is this (eg. if you defined 3 columns in your `config.php` file):
 
-    '{{{col1}}} {{{col2}}} {{{col3}}}'
+```php
+'{{{col1}}} {{{col2}}} {{{col3}}}'
+```
 
 So each column is displayed one after the other. But if you’d like to change that layout, you can use this:
 
-    function layoutTemplate() {
-        return '<div class="first-column">{{{col1}}}</div><div class="other-columns">{{{col2}}} {{{col3}}}</div>';
-    }
+```php
+function layoutTemplate() {
+    return '<div class="first-column">{{{col1}}}</div><div class="other-columns">{{{col2}}} {{{col3}}}</div>';
+}
+```
