@@ -1,0 +1,15 @@
+/* humanstxt.org */
+
+/* TEAM */
+	Owner: Owner Name
+	Contact: How to contact
+	Location: City, Country
+
+/* SITE */
+
+	This website use the "PubwichFork" open-source PHP Web application.
+	You can find more informations on the official website : http://eye48.com/go/pubwichfork
+	And you're welcome to fork it on GitHub : http://github.com/haschek/PubwichFork
+	
+	Doctype: HTML5
+	Components: Cache_Lite, Mustache.php, PHP Gettext, PHP OAuth, Zend_Json
