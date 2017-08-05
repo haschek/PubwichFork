@@ -124,3 +124,8 @@ msgstr ""
 #, php-format
 msgid "All data is &copy; copyright %s. Proudly powered by %s."
 msgstr ""
+
+#: app/services/Twitter.php:112
+#, php-format
+msgid "Profileimage of @{{{user_nickname}}}"
+msgstr ""
